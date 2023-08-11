@@ -4,10 +4,9 @@ const PORT = process.env.PORT || 7070
 const mongoose = require("mongoose")
 const User = require("./User")
 const jwt = require('jsonwebtoken')
+app.use(express.json());
 mongoose.connect("mongodb+srv://prabinlamsal:mKVIj2ehxVoKQqhB@cluster0.92rvbxj.mongodb.net/?retryWrites=true&w=majority", {
 })
-
-app.use(express.json());
 
 app.post("/auth/login", async (req, res) => {
     const { email, password, name } = req.body;
@@ -29,6 +28,7 @@ app.post("/auth/login", async (req, res) => {
                 return res.json({
                     token: token
                 });
+
             }
         })
     }
